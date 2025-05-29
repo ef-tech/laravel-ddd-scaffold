@@ -12,7 +12,8 @@ class InitCommand extends Command
 
     public function handle()
     {
-        $base = base_path($this->argument('name'));
+        $name = $this->argument('name');
+        $base = base_path($name);
 
         $directories = [
             '/Application/DTOs',
@@ -39,6 +40,8 @@ class InitCommand extends Command
             $this->createGitkeepFile($fullPath);
         }
 
+        $this->createConfigFile($name);
+
         $this->info('DDD structure scaffolding complete!');
     }
 
@@ -48,5 +51,23 @@ class InitCommand extends Command
         if (! File::exists($gitkeepPath) && empty(File::files($path))) {
             File::put($gitkeepPath, '');
         }
+    }
+
+    private function createConfigFile(string $name): void
+    {
+        $configPath = config_path('ddd-scaffold.php');
+
+        if (File::exists($configPath)) {
+            $this->info("Config file already exists at {$configPath}. Skipping creation.");
+            return;
+        }
+
+        File::copy(__DIR__ . '/../../config/ddd-scaffold.php', $configPath);
+
+        $content = File::get($configPath);
+        $content = preg_replace("/'default_domain'\s*=>\s*'.*?'/", "'default_domain' => '{$name}'", $content);
+        File::put($configPath, $content);
+
+        $this->info("Config file created at {$configPath} with default_domain set to '{$name}'");
     }
 }
