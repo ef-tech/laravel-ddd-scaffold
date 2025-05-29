@@ -10,6 +10,7 @@ use EfTech\DddScaffold\Commands\MakeExceptionCommand;
 use EfTech\DddScaffold\Commands\MakePresenterCommand;
 use EfTech\DddScaffold\Commands\MakeQueryCommand;
 use EfTech\DddScaffold\Commands\MakeRepositoryCommand;
+use EfTech\DddScaffold\Commands\MakeRuleCommand;
 use EfTech\DddScaffold\Commands\MakeServiceCommand;
 use EfTech\DddScaffold\Commands\MakeUseCaseCommand;
 use EfTech\DddScaffold\Commands\MakeValueObjectCommand;
@@ -32,6 +33,7 @@ class DddScaffoldServiceProvider extends ServiceProvider
                 MakeEnumCommand::class,
                 MakeQueryCommand::class,
                 MakePresenterCommand::class,
+                MakeRuleCommand::class,
             ]);
         }
     }

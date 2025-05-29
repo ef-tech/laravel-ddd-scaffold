@@ -1,0 +1,17 @@
+<?php
+
+namespace {{ namespace }};
+
+class {{ class }}
+{
+    public function passes(mixed $value): bool
+    {
+        // TODO: implement rule logic
+        return true;
+    }
+
+    public function message(): string
+    {
+        return '{{ class }} validation failed.';
+    }
+}
