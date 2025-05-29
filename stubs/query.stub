@@ -1,0 +1,17 @@
+<?php
+
+namespace {{ namespace }};
+
+class {{ class }}
+{
+    public function __construct()
+    {
+        //
+    }
+
+    public function handle(): mixed
+    {
+        // TODO: Implement query logic here
+        return [];
+    }
+}

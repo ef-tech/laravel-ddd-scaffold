@@ -19,6 +19,7 @@ class InitCommand extends Command
             '/Application/DTOs',
             '/Application/Enum',
             '/Application/Exceptions',
+            '/Application/Queries',
             '/Application/Services',
             '/Application/UseCases',
             '/Domain/Exceptions',
@@ -37,7 +38,7 @@ class InitCommand extends Command
         ];
 
         foreach ($directories as $dir) {
-            $fullPath = $base . $dir;
+            $fullPath = $base.$dir;
             File::ensureDirectoryExists($fullPath);
             $this->createGitkeepFile($fullPath);
         }
@@ -64,7 +65,7 @@ class InitCommand extends Command
             return;
         }
 
-        File::copy(__DIR__ . '/../../config/ddd-scaffold.php', $configPath);
+        File::copy(__DIR__.'/../../config/ddd-scaffold.php', $configPath);
 
         $content = File::get($configPath);
         $content = preg_replace("/'default_domain'\s*=>\s*'.*?'/", "'default_domain' => '{$name}'", $content);
