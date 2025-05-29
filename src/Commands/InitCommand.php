@@ -19,6 +19,7 @@ class InitCommand extends Command
             '/Application/DTOs',
             '/Application/Enum',
             '/Application/Exceptions',
+            '/Application/Presenters',
             '/Application/Queries',
             '/Application/Services',
             '/Application/UseCases',
