@@ -38,10 +38,19 @@ class DddScaffoldServiceProvider extends ServiceProvider
                 MakeConstantCommand::class,
             ]);
         }
+
+        $this->mergeConfigFrom(
+            __DIR__.'/../config/ddd-scaffold.php',
+            'ddd-scaffold'
+        );
     }
 
     public function boot(): void
     {
-        //
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__.'/../config/ddd-scaffold.php' => config_path('ddd-scaffold.php'),
+            ], 'ddd-scaffold-config');
+        }
     }
 }
