@@ -33,7 +33,7 @@ class InitCommand extends Command
             '/Infrastructure/Exceptions',
             '/Infrastructure/Repositories',
             '/Infrastructure/Services',
-            '/Support/Contracts',
+            '/Support/Constants',
             '/Support/Enum',
             '/Support/Exceptions',
         ];
