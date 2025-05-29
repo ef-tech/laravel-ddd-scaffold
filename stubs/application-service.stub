@@ -1,0 +1,11 @@
+<?php
+
+namespace {{ namespace }};
+
+class {{ class }}
+{
+    public function execute(): void
+    {
+        // TODO: Implement service logic
+    }
+}

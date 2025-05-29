@@ -1,0 +1,12 @@
+<?php
+
+namespace {{ namespace }};
+
+class {{ class }}
+{
+    public function isSatisfiedBy($entity): bool
+    {
+        // TODO: Add domain rule evaluation logic
+        return true;
+    }
+}
