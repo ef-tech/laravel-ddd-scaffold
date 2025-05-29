@@ -5,6 +5,7 @@ namespace EfTech\DddScaffold;
 use EfTech\DddScaffold\Commands\InitCommand;
 use EfTech\DddScaffold\Commands\MakeDomainModelCommand;
 use EfTech\DddScaffold\Commands\MakeDtoCommand;
+use EfTech\DddScaffold\Commands\MakeEnumCommand;
 use EfTech\DddScaffold\Commands\MakeExceptionCommand;
 use EfTech\DddScaffold\Commands\MakeRepositoryCommand;
 use EfTech\DddScaffold\Commands\MakeServiceCommand;
@@ -26,6 +27,7 @@ class DddScaffoldServiceProvider extends ServiceProvider
                 MakeRepositoryCommand::class,
                 MakeServiceCommand::class,
                 MakeExceptionCommand::class,
+                MakeEnumCommand::class,
             ]);
         }
     }

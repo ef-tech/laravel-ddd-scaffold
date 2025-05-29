@@ -1,0 +1,24 @@
+<?php
+
+namespace {{ namespace }};
+
+enum {{ class }}: string
+{
+    case DRAFT = 'draft';
+    case ACTIVE = 'active';
+    case COMPLETED = 'completed';
+
+    public function label(): string
+    {
+        // return match ($this) {
+        //     self::DRAFT => 'Draft',
+        //     self::ACTIVE => 'Active',
+        //     self::COMPLETED => 'Completed'
+        // };
+    }
+
+    // public function isActive(): bool
+    // {
+    //     return $this === self::ACTIVE;
+    // }
+}
