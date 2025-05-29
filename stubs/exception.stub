@@ -1,0 +1,10 @@
+<?php
+
+namespace {{ namespace }};
+
+use RuntimeException;
+
+class {{ class }} extends RuntimeException
+{
+    //
+}
