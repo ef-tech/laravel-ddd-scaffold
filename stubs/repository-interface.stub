@@ -1,0 +1,10 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ model_namespace }}\{{ model }};
+
+interface {{ class }}
+{
+    public function save({{ model }} $entity): {{ model }};
+}

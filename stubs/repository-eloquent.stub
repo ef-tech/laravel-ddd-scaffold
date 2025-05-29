@@ -1,0 +1,22 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Models\{{ model }} as Eloquent{{ model }};
+use {{ interface_namespace }}\{{ interface }};
+use {{ model_namespace }}\{{ model }};
+
+class {{ class }} implements {{ interface }}
+{
+    public function save({{ model }} $entity): {{ model }}
+    {
+        $eloquent = new Eloquent{{ model }}();
+        // TODO: map fields from $entity to $eloquent
+        $eloquent->save();
+
+        return new {{ model }}(
+            $eloquent->id,
+            // TODO: map back from $eloquent to model
+        );
+    }
+}
