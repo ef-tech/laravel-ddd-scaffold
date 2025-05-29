@@ -36,8 +36,17 @@ class InitCommand extends Command
         foreach ($directories as $dir) {
             $fullPath = $base . $dir;
             File::ensureDirectoryExists($fullPath);
+            $this->createGitkeepFile($fullPath);
         }
 
-        $this->info('✅ DDD structure scaffolding complete!');
+        $this->info('DDD structure scaffolding complete!');
+    }
+
+    private function createGitkeepFile(string $path): void
+    {
+        $gitkeepPath = $path.'/.gitkeep';
+        if (! File::exists($gitkeepPath) && empty(File::files($path))) {
+            File::put($gitkeepPath, '');
+        }
     }
 }
