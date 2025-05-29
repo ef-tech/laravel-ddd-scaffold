@@ -1,0 +1,16 @@
+<?php
+
+namespace {{ namespace }};
+
+class {{ class }}
+{
+    public function __construct(
+        // public readonly int $id,
+        // public string $name
+    ) {}
+
+    // public function doSomething(): void
+    // {
+    //     // TODO: Add domain logic here
+    // }
+}
