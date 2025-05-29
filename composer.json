@@ -14,6 +14,13 @@
             "EfTech\\DddScaffold\\": "src/"
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "EfTech\\DddScaffold\\DddScaffoldServiceProvider"
+            ]
+        }
+    },
     "require": {
         "php": "^8.2",
         "illuminate/support": "^9.0|^10.0|^11.0|^12.0"
