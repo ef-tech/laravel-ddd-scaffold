@@ -1,0 +1,10 @@
+<?php
+
+namespace {{ namespace }};
+
+class {{ class }}
+{
+    public const EXAMPLE = 'value';
+
+    // Add more constants as needed
+}

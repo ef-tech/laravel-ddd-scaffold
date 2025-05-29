@@ -3,6 +3,7 @@
 namespace EfTech\DddScaffold;
 
 use EfTech\DddScaffold\Commands\InitCommand;
+use EfTech\DddScaffold\Commands\MakeConstantCommand;
 use EfTech\DddScaffold\Commands\MakeDomainModelCommand;
 use EfTech\DddScaffold\Commands\MakeDtoCommand;
 use EfTech\DddScaffold\Commands\MakeEnumCommand;
@@ -34,6 +35,7 @@ class DddScaffoldServiceProvider extends ServiceProvider
                 MakeQueryCommand::class,
                 MakePresenterCommand::class,
                 MakeRuleCommand::class,
+                MakeConstantCommand::class,
             ]);
         }
     }
