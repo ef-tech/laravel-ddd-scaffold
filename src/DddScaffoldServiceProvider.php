@@ -13,6 +13,7 @@ use EfTech\DddScaffold\Commands\MakeQueryCommand;
 use EfTech\DddScaffold\Commands\MakeRepositoryCommand;
 use EfTech\DddScaffold\Commands\MakeRuleCommand;
 use EfTech\DddScaffold\Commands\MakeServiceCommand;
+use EfTech\DddScaffold\Commands\MakeTestCommand;
 use EfTech\DddScaffold\Commands\MakeUseCaseCommand;
 use EfTech\DddScaffold\Commands\MakeValueObjectCommand;
 use Illuminate\Support\ServiceProvider;
@@ -36,6 +37,7 @@ class DddScaffoldServiceProvider extends ServiceProvider
                 MakePresenterCommand::class,
                 MakeRuleCommand::class,
                 MakeConstantCommand::class,
+                MakeTestCommand::class,
             ]);
         }
 

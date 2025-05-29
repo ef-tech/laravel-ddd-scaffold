@@ -1,0 +1,5 @@
+<?php
+
+test('{{ class }} works', function () {
+    expect(true)->toBeTrue();
+});
