@@ -1,0 +1,21 @@
+{
+    "name": "ef-tech/laravel-ddd-scaffold",
+    "description": "A Laravel package to scaffold DDD and Clean Architecture structure.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Fumihiro Okumura",
+            "email": "okumura@ef-tech.jp"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "EfTech\\DddScaffold\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^8.2",
+        "illuminate/support": "^9.0|^10.0|^11.0|^12.0"
+    }
+}
