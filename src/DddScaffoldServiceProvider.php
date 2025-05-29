@@ -6,6 +6,7 @@ use EfTech\DddScaffold\Commands\InitCommand;
 use EfTech\DddScaffold\Commands\MakeDomainModelCommand;
 use EfTech\DddScaffold\Commands\MakeDtoCommand;
 use EfTech\DddScaffold\Commands\MakeUseCaseCommand;
+use EfTech\DddScaffold\Commands\MakeValueObjectCommand;
 use Illuminate\Support\ServiceProvider;
 
 class DddScaffoldServiceProvider extends ServiceProvider
@@ -18,6 +19,7 @@ class DddScaffoldServiceProvider extends ServiceProvider
                 MakeUseCaseCommand::class,
                 MakeDtoCommand::class,
                 MakeDomainModelCommand::class,
+                MakeValueObjectCommand::class,
             ]);
         }
     }

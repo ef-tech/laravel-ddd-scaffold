@@ -1,0 +1,19 @@
+<?php
+
+namespace {{ namespace }};
+
+class {{ class }}
+{
+    public function __construct(public readonly string $value)
+    {
+        // TODO: Add validation logic here
+        if (trim($this->value) === '') {
+            throw new \InvalidArgumentException('{{ class }} must not be empty.');
+        }
+    }
+
+    public function __toString(): string
+    {
+        return $this->value;
+    }
+}
