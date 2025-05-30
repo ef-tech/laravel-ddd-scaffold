@@ -1,0 +1,13 @@
+<?php
+
+namespace {{ namespace }};
+
+class {{ class }}
+{
+    public function __construct()
+    {
+        // TODO: inject your entity or value objects here
+    }
+
+    // TODO: add domain behavior and invariant rules
+}

@@ -3,6 +3,7 @@
 namespace EfTech\DddScaffold;
 
 use EfTech\DddScaffold\Commands\InitCommand;
+use EfTech\DddScaffold\Commands\MakeAggregateCommand;
 use EfTech\DddScaffold\Commands\MakeConstantCommand;
 use EfTech\DddScaffold\Commands\MakeDtoCommand;
 use EfTech\DddScaffold\Commands\MakeEntityCommand;
@@ -38,6 +39,7 @@ class DddScaffoldServiceProvider extends ServiceProvider
                 MakeRuleCommand::class,
                 MakeConstantCommand::class,
                 MakeTestCommand::class,
+                MakeAggregateCommand::class,
             ]);
         }
 
