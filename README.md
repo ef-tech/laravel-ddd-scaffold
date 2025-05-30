@@ -310,26 +310,6 @@ php artisan ddd:make:rule StrongPassword
 php artisan ddd:make:rule Order/ValidDeliveryDate
 ```
 
-### ddd:make:contract
-
-> **Note:** This command is planned for a future release and is not yet implemented.
-
-Generates an interface/contract.
-
-```bash
-php artisan ddd:make:contract {name} [--domain=]
-```
-
-- `name`: The name of the Contract/Interface (e.g., PaymentGateway or User/UserProvider)
-- `--domain`: Optional. The domain name to use (defaults to the value in config)
-
-Examples:
-
-```bash
-php artisan ddd:make:contract PaymentGateway
-php artisan ddd:make:contract User/UserProvider
-```
-
 ### ddd:make:constant
 
 Generates a Constants class.
