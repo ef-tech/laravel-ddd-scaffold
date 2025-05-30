@@ -4,12 +4,12 @@ namespace {{ namespace }};
 
 class {{ class }}
 {
-    public static function fromModel($model): array
+    public static function fromEntity($entity): array
     {
-        // TODO: Transform model to API response format
+        // TODO: Transform entity to API response format
         return [
-            'id' => $model->id,
-            'created_at' => $model->created_at->toIso8601String(),
+            'id' => $entity->id,
+            'created_at' => $entity->created_at->toIso8601String(),
         ];
     }
 }

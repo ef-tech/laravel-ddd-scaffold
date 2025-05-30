@@ -9,7 +9,7 @@ and Clean Architecture principles in their projects. This package allows you to:
 
 - Separate business logic from the default Laravel `app/` directory
 - Organize code into domain-specific modules
-- Generate standardized components like UseCases, DTOs, Domain Models, Value Objects, and Repositories
+- Generate standardized components like UseCases, DTOs, Entitys, Value Objects, and Repositories
 - Maintain a consistent project structure across your team
 
 By adopting DDD principles, your Laravel applications become more maintainable, testable, and scalable as they grow in
@@ -72,7 +72,7 @@ Backoffice/
 │   └── UseCases/
 ├── Domain/
 │   ├── Exceptions/
-│   ├── Models/
+│   ├── Entities/
 │   ├── Repositories/
 │   ├── Rules/
 │   ├── Services/
@@ -157,22 +157,22 @@ php artisan ddd:make:vo Email
 php artisan ddd:make:vo User/Address
 ```
 
-### ddd:make:model
+### ddd:make:entity
 
-Generates a Domain Model class.
+Generates a Entity class.
 
 ```bash
-php artisan ddd:make:model {name} [--domain=]
+php artisan ddd:make:entity {name} [--domain=]
 ```
 
-- `name`: The name of the Domain Model class (e.g., User or Order/LineItem)
+- `name`: The name of the Entity class (e.g., User or Order/LineItem)
 - `--domain`: Optional. The domain name to use (defaults to the value in config)
 
 Examples:
 
 ```bash
-php artisan ddd:make:model User
-php artisan ddd:make:model Order/LineItem
+php artisan ddd:make:entity User
+php artisan ddd:make:entity Order/LineItem
 ```
 
 ### ddd:make:repository
@@ -363,8 +363,8 @@ php artisan ddd:make:vo Password --domain=UserManagement
 # Create DTO for user data
 php artisan ddd:make:dto UserRegistrationData --domain=UserManagement
 
-# Create domain model
-php artisan ddd:make:model User --domain=UserManagement
+# Create entity
+php artisan ddd:make:entity User --domain=UserManagement
 
 # Create repository
 php artisan ddd:make:repository User --domain=UserManagement
@@ -384,7 +384,7 @@ This will generate a complete set of files following DDD naming conventions and 
 - `UserManagement/Domain/ValueObjects/Email.php`
 - `UserManagement/Domain/ValueObjects/Password.php`
 - `UserManagement/Application/DTOs/UserRegistrationData.php`
-- `UserManagement/Domain/Models/User.php`
+- `UserManagement/Domain/Entities/User.php`
 - `UserManagement/Domain/Repositories/UserRepositoryInterface.php`
 - `UserManagement/Infrastructure/Repositories/UserRepository.php`
 - `UserManagement/Application/UseCases/RegisterUserUseCase.php`

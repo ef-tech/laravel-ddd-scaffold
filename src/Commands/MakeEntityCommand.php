@@ -6,25 +6,25 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
-class MakeDomainModelCommand extends Command
+class MakeEntityCommand extends Command
 {
-    protected $signature = 'ddd:make:model {name : e.g. Task} {--domain= : Domain name (default from config)}';
-    protected $description = 'Generate a new domain model class under Domain/Models';
+    protected $signature = 'ddd:make:entity {name : e.g. Task} {--domain= : Domain name (default from config)}';
+    protected $description = 'Generate a new entity class under Domain/Entities';
 
     public function handle(): void
     {
         $name = Str::studly($this->argument('name'));
         $domain = $this->option('domain') ?? config('ddd-scaffold.default_domain', 'App');
 
-        $namespace = Str::studly($domain).'\\Domain\\Models';
-        $path = base_path("{$domain}/Domain/Models/{$name}.php");
+        $namespace = Str::studly($domain).'\\Domain\\Entities';
+        $path = base_path("{$domain}/Domain/Entities/{$name}.php");
 
         if (File::exists($path)) {
             $this->error("{$name} already exists at: {$path}");
             return;
         }
 
-        $stubPath = (config('ddd-scaffold.stubs_path') ?? __DIR__.'/../../stubs').'/model.stub';
+        $stubPath = (config('ddd-scaffold.stubs_path') ?? __DIR__.'/../../stubs').'/entity.stub';
         if (! File::exists($stubPath)) {
             $this->error("Stub file not found: {$stubPath}");
             return;
@@ -45,6 +45,6 @@ class MakeDomainModelCommand extends Command
             File::delete($gitkeepPath);
         }
 
-        $this->info("Domain Model [{$name}] created at: {$path}");
+        $this->info("Domain Entity [{$name}] created at: {$path}");
     }
 }

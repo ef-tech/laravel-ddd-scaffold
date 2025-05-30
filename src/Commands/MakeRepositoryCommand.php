@@ -21,7 +21,7 @@ class MakeRepositoryCommand extends Command
 
         $interfaceNamespace = Str::studly($domain).'\\Domain\\Repositories';
         $eloquentNamespace = Str::studly($domain).'\\Infrastructure\\Repositories';
-        $modelNamespace = Str::studly($domain).'\\Domain\\Models';
+        $entityNamespace = Str::studly($domain).'\\Domain\\Entities';
 
         $stubDir = (config('ddd-scaffold.stubs_path') ?? __DIR__.'/../../stubs');
 
@@ -30,8 +30,8 @@ class MakeRepositoryCommand extends Command
         if (! File::exists($interfacePath)) {
             $stub = File::get($stubDir.'/repository-interface.stub');
             $content = str_replace(
-                ['{{ namespace }}', '{{ class }}', '{{ model }}', '{{ model_namespace }}'],
-                [$interfaceNamespace, $interfaceName, $name, $modelNamespace],
+                ['{{ namespace }}', '{{ class }}', '{{ entity }}', '{{ entity_namespace }}'],
+                [$interfaceNamespace, $interfaceName, $name, $entityNamespace],
                 $stub
             );
             File::ensureDirectoryExists(dirname($interfacePath));
@@ -52,10 +52,10 @@ class MakeRepositoryCommand extends Command
             $stub = File::get($stubDir.'/repository-eloquent.stub');
             $content = str_replace(
                 [
-                    '{{ namespace }}', '{{ class }}', '{{ model }}', '{{ interface }}', '{{ interface_namespace }}',
-                    '{{ model_namespace }}',
+                    '{{ namespace }}', '{{ class }}', '{{ entity }}', '{{ interface }}', '{{ interface_namespace }}',
+                    '{{ entity_namespace }}',
                 ],
-                [$eloquentNamespace, $eloquentName, $name, $interfaceName, $interfaceNamespace, $modelNamespace],
+                [$eloquentNamespace, $eloquentName, $name, $interfaceName, $interfaceNamespace, $entityNamespace],
                 $stub
             );
             File::ensureDirectoryExists(dirname($eloquentPath));

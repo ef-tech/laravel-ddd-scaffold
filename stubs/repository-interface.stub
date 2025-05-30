@@ -2,9 +2,9 @@
 
 namespace {{ namespace }};
 
-use {{ model_namespace }}\{{ model }};
+use {{ entity_namespace }}\{{ entity }};
 
 interface {{ class }}
 {
-    public function save({{ model }} $entity): {{ model }};
+    public function save({{ entity }} $entity): {{ entity }};
 }
