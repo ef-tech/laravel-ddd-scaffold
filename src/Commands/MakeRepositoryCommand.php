@@ -23,7 +23,7 @@ class MakeRepositoryCommand extends Command
         $eloquentNamespace = Str::studly($domain).'\\Infrastructure\\Repositories';
         $modelNamespace = Str::studly($domain).'\\Domain\\Models';
 
-        $stubDir = config('ddd-scaffold.stubs_path', __DIR__.'/../../stubs');
+        $stubDir = (config('ddd-scaffold.stubs_path') ?? __DIR__.'/../../stubs');
 
         // --- Interface ---
         $interfacePath = base_path("{$domain}/Domain/Repositories/{$interfaceName}.php");

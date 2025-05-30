@@ -27,7 +27,7 @@ class MakeConstantCommand extends Command
             return;
         }
 
-        $stubPath = config('ddd-scaffold.stubs_path', __DIR__.'/../../stubs').'/constant.stub';
+        $stubPath = (config('ddd-scaffold.stubs_path') ?? __DIR__.'/../../stubs').'/constant.stub';
         if (! File::exists($stubPath)) {
             $this->error("Stub file not found: {$stubPath}");
             return;

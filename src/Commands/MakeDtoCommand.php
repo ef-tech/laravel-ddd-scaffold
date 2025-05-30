@@ -32,7 +32,7 @@ class MakeDtoCommand extends Command
             return;
         }
 
-        $stubPath = config('ddd-scaffold.stubs_path', __DIR__.'/../../stubs').'/dto.stub';
+        $stubPath = (config('ddd-scaffold.stubs_path') ?? __DIR__.'/../../stubs').'/dto.stub';
         if (! File::exists($stubPath)) {
             $this->error("Stub file not found: {$stubPath}");
             return;

@@ -24,7 +24,7 @@ class MakeDomainModelCommand extends Command
             return;
         }
 
-        $stubPath = config('ddd-scaffold.stubs_path', __DIR__.'/../../stubs').'/model.stub';
+        $stubPath = (config('ddd-scaffold.stubs_path') ?? __DIR__.'/../../stubs').'/model.stub';
         if (! File::exists($stubPath)) {
             $this->error("Stub file not found: {$stubPath}");
             return;

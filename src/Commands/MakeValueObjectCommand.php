@@ -24,7 +24,7 @@ class MakeValueObjectCommand extends Command
             return;
         }
 
-        $stubPath = config('ddd-scaffold.stubs_path', __DIR__.'/../../stubs').'/vo.stub';
+        $stubPath = (config('ddd-scaffold.stubs_path') ?? __DIR__.'/../../stubs').'/vo.stub';
         if (! File::exists($stubPath)) {
             $this->error("Stub file not found: {$stubPath}");
             return;

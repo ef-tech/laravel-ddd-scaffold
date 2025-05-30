@@ -30,7 +30,7 @@ class MakeServiceCommand extends Command
         }
 
         $stubName = $type === 'Domain' ? 'domain-service.stub' : 'application-service.stub';
-        $stubPath = config('ddd-scaffold.stubs_path', __DIR__.'/../../stubs').'/'.$stubName;
+        $stubPath = (config('ddd-scaffold.stubs_path') ?? __DIR__.'/../../stubs').'/'.$stubName;
 
         if (! File::exists($stubPath)) {
             $this->error("Stub file not found: {$stubPath}");

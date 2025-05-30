@@ -33,7 +33,7 @@ class MakeUseCaseCommand extends Command
             return;
         }
 
-        $stubPath = config('ddd-scaffold.stubs_path', __DIR__.'/../../stubs').'/usecase.stub';
+        $stubPath = (config('ddd-scaffold.stubs_path') ?? __DIR__.'/../../stubs').'/usecase.stub';
         if (! File::exists($stubPath)) {
             $this->error("Stub file not found: {$stubPath}");
             return;
