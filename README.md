@@ -175,6 +175,24 @@ php artisan ddd:make:entity User
 php artisan ddd:make:entity Order/LineItem
 ```
 
+### ddd:make:aggregate
+
+Generates a Aggregate class.
+
+```bash
+php artisan ddd:make:aggregate {name} [--domain=]
+```
+
+- `name`: The name of the Aggregate class (e.g., User or Order/LineItem)
+- `--domain`: Optional. The domain name to use (defaults to the value in config)
+
+Examples:
+
+```bash
+php artisan ddd:make:aggregate CustomerAggregate
+php artisan ddd:make:aggregate Customer/OrderAggregate
+```
+
 ### ddd:make:repository
 
 Generates a Repository interface and implementation.
@@ -366,6 +384,9 @@ php artisan ddd:make:dto UserRegistrationData --domain=UserManagement
 # Create entity
 php artisan ddd:make:entity User --domain=UserManagement
 
+# Create aggregate
+php artisan ddd:make:aggregate UserAggregate --domain=UserManagement
+
 # Create repository
 php artisan ddd:make:repository User --domain=UserManagement
 
@@ -385,6 +406,7 @@ This will generate a complete set of files following DDD naming conventions and 
 - `UserManagement/Domain/ValueObjects/Password.php`
 - `UserManagement/Application/DTOs/UserRegistrationData.php`
 - `UserManagement/Domain/Entities/User.php`
+- `UserManagement/Domain/Aggregate/UserAggregate.php`
 - `UserManagement/Domain/Repositories/UserRepositoryInterface.php`
 - `UserManagement/Infrastructure/Repositories/UserRepository.php`
 - `UserManagement/Application/UseCases/RegisterUserUseCase.php`
