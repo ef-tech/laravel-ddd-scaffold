@@ -36,7 +36,7 @@ class MakeTestCommand extends Command
         $isPest = $framework === 'pest';
         $relativePath = str_replace('\\', '/', $name).'Test.php';
 
-        $outputPath = base_path("tests/{$domain}/Application/UseCases/{$relativePath}");
+        $outputPath = base_path("tests/{$domain}/{$relativePath}");
 
         if (File::exists($outputPath)) {
             $this->error("Test file already exists: {$outputPath}");
@@ -45,7 +45,7 @@ class MakeTestCommand extends Command
 
         File::ensureDirectoryExists(dirname($outputPath));
 
-        $namespace = "Tests\\{$domain}\\Application\\UseCases\\".Str::replace('/', '\\', dirname($name));
+        $namespace = "Tests\\{$domain}\\".Str::replace('/', '\\', dirname($name));
         $class = class_basename($name).'Test';
 
         $stub = File::get($stubPath);
