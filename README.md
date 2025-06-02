@@ -310,6 +310,29 @@ php artisan ddd:make:presenter UserPresenter
 php artisan ddd:make:presenter Order/OrderSummaryPresenter
 ```
 
+### ddd:make:mapper
+
+Generates a Mapper class for converting between Domain Entities and either Models or DTOs.
+
+```bash
+php artisan ddd:make:mapper {name} [--domain=] [--model=] [--entity=] [--dto=]
+```
+
+- `name`: The name of the Mapper class (e.g., CustomerMapper or User/CustomerMapper)
+- `--domain`: Optional. The domain name to use (defaults to the value in config)
+- `--model`: Optional. The FQCN of the Laravel model (e.g., App/Models/User). Use only when mapping to/from models.
+- `--entity`: Required. The FQCN of the domain Entity class (e.g., Backoffice/Domain/Entities/Customer)
+- `--dto`: Optional. The FQCN of the DTO class. Use only when mapping to/from DTOs.
+
+⚠️ You must specify either `--model` or `--dto`, not both.
+
+Examples:
+
+```bash
+php artisan ddd:make:mapper CustomerMapper --model=App/Models/Customer --entity=Backoffice/Domain/Entities/Customer
+php artisan ddd:make:mapper CustomerMapper --dto=Backoffice/Application/DTOs/CustomerData --entity=Backoffice/Domain/Entities/Customer
+```
+
 ### ddd:make:rule
 
 Generates a validation Rule class.
