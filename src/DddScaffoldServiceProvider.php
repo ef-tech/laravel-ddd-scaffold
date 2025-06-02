@@ -9,6 +9,7 @@ use EfTech\DddScaffold\Commands\MakeDtoCommand;
 use EfTech\DddScaffold\Commands\MakeEntityCommand;
 use EfTech\DddScaffold\Commands\MakeEnumCommand;
 use EfTech\DddScaffold\Commands\MakeExceptionCommand;
+use EfTech\DddScaffold\Commands\MakeMapperCommand;
 use EfTech\DddScaffold\Commands\MakePresenterCommand;
 use EfTech\DddScaffold\Commands\MakeQueryCommand;
 use EfTech\DddScaffold\Commands\MakeRepositoryCommand;
@@ -40,6 +41,7 @@ class DddScaffoldServiceProvider extends ServiceProvider
                 MakeConstantCommand::class,
                 MakeTestCommand::class,
                 MakeAggregateCommand::class,
+                MakeMapperCommand::class,
             ]);
         }
 

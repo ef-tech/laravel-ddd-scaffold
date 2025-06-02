@@ -1,0 +1,33 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ eloquent_model_namespace }} as Model;
+use {{ domain_entity_namespace }} as Entity;
+
+class {{ class }}
+{
+    public static function toEntity(Model $model): Entity
+    {
+        // TODO: Map single model to domain entity
+    }
+
+    public static function toEntityList(iterable $models): array
+    {
+        return collect($models)
+            ->map(fn(Model $model) => self::toEntity($model))
+            ->all();
+    }
+
+    public static function toModel(Entity $entity): Model
+    {
+        // TODO: Map single entity to Eloquent model
+    }
+
+    public static function toModelList(iterable $entities): array
+    {
+        return collect($entities)
+            ->map(fn(Entity $entity) => self::toModel($entity))
+            ->all();
+    }
+}
