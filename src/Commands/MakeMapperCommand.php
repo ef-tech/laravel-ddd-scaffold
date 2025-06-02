@@ -44,7 +44,7 @@ class MakeMapperCommand extends Command
         }
 
         $relativePath = str_replace('\\', '/', $name).'.php';
-        $mapperDir = $isDto ? 'Application/Mapper' : 'Infrastructure/Mapper';
+        $mapperDir = $isDto ? 'Application/Mappers' : 'Infrastructure/Mappers';
         $outputPath = base_path("{$domain}/{$mapperDir}/{$relativePath}");
 
         if (File::exists($outputPath)) {
@@ -54,7 +54,7 @@ class MakeMapperCommand extends Command
 
         File::ensureDirectoryExists(dirname($outputPath));
 
-        $namespace = "{$domain}\\".($isDto ? 'Application\\Mapper' : 'Infrastructure\\Mapper').
+        $namespace = "{$domain}\\".($isDto ? 'Application\\Mappers' : 'Infrastructure\\Mappers').
             (Str::contains($name, '/') ? '\\'.str_replace('/', '\\', dirname($name)) : '');
         $class = class_basename($name);
 

@@ -17,9 +17,9 @@ class InitCommand extends Command
 
         $directories = [
             '/Application/DTOs',
-            '/Application/Enum',
+            '/Application/Enums',
             '/Application/Exceptions',
-            '/Application/Mapper',
+            '/Application/Mappers',
             '/Application/Presenters',
             '/Application/Queries',
             '/Application/Services',
@@ -31,13 +31,13 @@ class InitCommand extends Command
             '/Domain/Rules',
             '/Domain/Services',
             '/Domain/ValueObjects',
-            '/Infrastructure/Enum',
+            '/Infrastructure/Enums',
             '/Infrastructure/Exceptions',
-            '/Infrastructure/Mapper',
+            '/Infrastructure/Mappers',
             '/Infrastructure/Repositories',
             '/Infrastructure/Services',
             '/Support/Constants',
-            '/Support/Enum',
+            '/Support/Enums',
             '/Support/Exceptions',
         ];
 
