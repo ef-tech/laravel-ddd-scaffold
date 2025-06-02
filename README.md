@@ -72,7 +72,7 @@ Backoffice/
 │   ├── Services/
 │   └── UseCases/
 ├── Domain/
-│   ├── Aggregate/
+│   ├── Aggregates/
 │   ├── Entities/
 │   ├── Exceptions/
 │   ├── Repositories/
@@ -432,7 +432,7 @@ This will generate a complete set of files following DDD naming conventions and 
 - `UserManagement/Domain/ValueObjects/Password.php`
 - `UserManagement/Application/DTOs/UserRegistrationData.php`
 - `UserManagement/Domain/Entities/User.php`
-- `UserManagement/Domain/Aggregate/UserAggregate.php`
+- `UserManagement/Domain/Aggregates/UserAggregate.php`
 - `UserManagement/Domain/Repositories/UserRepositoryInterface.php`
 - `UserManagement/Infrastructure/Repositories/UserRepository.php`
 - `UserManagement/Application/UseCases/RegisterUserUseCase.php`

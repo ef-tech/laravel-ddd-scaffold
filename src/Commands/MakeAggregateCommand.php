@@ -26,7 +26,7 @@ class MakeAggregateCommand extends Command
         }
 
         $relativePath = str_replace('\\', '/', $name).'.php';
-        $path = base_path("{$domain}/Domain/Aggregate/{$relativePath}");
+        $path = base_path("{$domain}/Domain/Aggregates/{$relativePath}");
 
         if (File::exists($path)) {
             $this->error("Aggregate already exists: {$path}");
@@ -35,7 +35,7 @@ class MakeAggregateCommand extends Command
 
         File::ensureDirectoryExists(dirname($path));
 
-        $namespace = "{$domain}\\Domain\\Aggregate".
+        $namespace = "{$domain}\\Domain\\Aggregates".
             (Str::contains($name, '/') ? '\\'.str_replace('/', '\\', dirname($name)) : '');
         $class = class_basename($name);
 

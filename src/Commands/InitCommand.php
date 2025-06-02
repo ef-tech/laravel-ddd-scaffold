@@ -24,7 +24,7 @@ class InitCommand extends Command
             '/Application/Queries',
             '/Application/Services',
             '/Application/UseCases',
-            '/Domain/Aggregate',
+            '/Domain/Aggregates',
             '/Domain/Entities',
             '/Domain/Exceptions',
             '/Domain/Repositories',
