@@ -1,0 +1,33 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ dto_namespace }} as DTO;
+use {{ domain_entity_namespace }} as Entity;
+
+class {{ class }}
+{
+    public static function toEntity(DTO $dto): Entity
+    {
+        // TODO: Map DTO to domain entity
+    }
+
+    public static function toEntityList(iterable $dtos): array
+    {
+        return collect($dtos)
+            ->map(fn(DTO $dto) => self::toEntity($dto))
+            ->all();
+    }
+
+    public static function toDto(Entity $entity): DTO
+    {
+        // TODO: Map domain entity to DTO
+    }
+
+    public static function toDtoList(iterable $entities): array
+    {
+        return collect($entities)
+            ->map(fn(Entity $entity) => self::toDto($entity))
+            ->all();
+    }
+}
