@@ -32,6 +32,7 @@ class InitCommand extends Command
             '/Domain/ValueObjects',
             '/Infrastructure/Enum',
             '/Infrastructure/Exceptions',
+            '/Infrastructure/Mapper',
             '/Infrastructure/Repositories',
             '/Infrastructure/Services',
             '/Support/Constants',
