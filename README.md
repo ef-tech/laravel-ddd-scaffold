@@ -64,27 +64,30 @@ This will create the following directory structure:
 Backoffice/
 ├── Application/
 │   ├── DTOs/
-│   ├── Enum/
+│   ├── Enums/
 │   ├── Exceptions/
+│   ├── Mappers/
 │   ├── Presenters/
 │   ├── Queries/
 │   ├── Services/
 │   └── UseCases/
 ├── Domain/
-│   ├── Exceptions/
+│   ├── Aggregate/
 │   ├── Entities/
+│   ├── Exceptions/
 │   ├── Repositories/
 │   ├── Rules/
 │   ├── Services/
 │   └── ValueObjects/
 ├── Infrastructure/
-│   ├── Enum/
+│   ├── Enums/
 │   ├── Exceptions/
+│   ├── Mappers/
 │   ├── Repositories/
 │   └── Services/
 └── Support/
     ├── Constants/
-    ├── Enum/
+    ├── Enums/
     └── Exceptions/
 ```
 
