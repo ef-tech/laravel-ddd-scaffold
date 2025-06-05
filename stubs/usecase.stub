@@ -4,6 +4,13 @@ namespace {{ namespace }};
 
 class {{ class }}
 {
+    public function __construct()
+    {
+        // Constructor can be used to inject dependencies if needed
+        // For example, you might inject a repository or service here
+        // $this->repository = $repository;
+    }
+
     public function handle(): void
     {
         // TODO: implement use case logic
