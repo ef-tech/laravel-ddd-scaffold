@@ -35,7 +35,7 @@ class MakeAggregateCommand extends Command
 
         File::ensureDirectoryExists(dirname($path));
 
-        $namespace = "{$domain}\\Domain\\Aggregates".
+        $namespace = Str::studly($domain)."\\Domain\\Aggregates".
             (Str::contains($name, '/') ? '\\'.str_replace('/', '\\', dirname($name)) : '');
         $class = class_basename($name);
 

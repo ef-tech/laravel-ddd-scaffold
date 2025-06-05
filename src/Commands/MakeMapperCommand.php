@@ -54,7 +54,7 @@ class MakeMapperCommand extends Command
 
         File::ensureDirectoryExists(dirname($outputPath));
 
-        $namespace = "{$domain}\\".($isDto ? 'Application\\Mappers' : 'Infrastructure\\Mappers').
+        $namespace = Str::studly($domain)."\\".($isDto ? 'Application\\Mappers' : 'Infrastructure\\Mappers').
             (Str::contains($name, '/') ? '\\'.str_replace('/', '\\', dirname($name)) : '');
         $class = class_basename($name);
 
