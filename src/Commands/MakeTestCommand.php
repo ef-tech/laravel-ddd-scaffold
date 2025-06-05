@@ -45,7 +45,7 @@ class MakeTestCommand extends Command
 
         File::ensureDirectoryExists(dirname($outputPath));
 
-        $namespace = "Tests\\{$domain}\\".Str::replace('/', '\\', dirname($name));
+        $namespace = "Tests\\".Str::studly($domain)."\\".Str::replace('/', '\\', dirname($name));
         $class = class_basename($name).'Test';
 
         $stub = File::get($stubPath);
