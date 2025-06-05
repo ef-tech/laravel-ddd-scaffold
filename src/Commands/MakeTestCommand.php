@@ -36,7 +36,7 @@ class MakeTestCommand extends Command
         $isPest = $framework === 'pest';
         $relativePath = str_replace('\\', '/', $name).'Test.php';
 
-        $outputPath = base_path("tests/{$domain}/{$relativePath}");
+        $outputPath = base_path("tests/".Str::studly($domain)."/{$relativePath}");
 
         if (File::exists($outputPath)) {
             $this->error("Test file already exists: {$outputPath}");
