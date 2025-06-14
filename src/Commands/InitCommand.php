@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\File;
 
 class InitCommand extends Command
 {
-    protected $signature = 'ddd:init {name=myproject}';
+    protected $signature = 'ddd:init {name=MyProject}';
     protected $description = 'Generate base DDD structure for your project';
 
     public function handle()
