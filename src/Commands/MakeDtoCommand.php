@@ -14,7 +14,7 @@ class MakeDtoCommand extends Command
     public function handle(): void
     {
         $input = $this->argument('name');
-        $domain = $this->option('domain') ?? config('ddd-scaffold.default_domain', 'App');
+        $domain = $this->option('domain') ?? config('ddd-scaffold.default_domain', 'MyProject');
 
         $segments = collect(explode('/', $input))->filter()->values();
         $baseClass = $segments->pop();

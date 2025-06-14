@@ -14,7 +14,7 @@ class MakeEntityCommand extends Command
     public function handle(): void
     {
         $name = Str::studly($this->argument('name'));
-        $domain = $this->option('domain') ?? config('ddd-scaffold.default_domain', 'App');
+        $domain = $this->option('domain') ?? config('ddd-scaffold.default_domain', 'MyProject');
 
         $namespace = Str::studly($domain).'\\Domain\\Entities';
         $path = base_path("{$domain}/Domain/Entities/{$name}.php");

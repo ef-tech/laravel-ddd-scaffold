@@ -17,7 +17,7 @@ class MakeTestCommand extends Command
     public function handle(): void
     {
         $name = Str::studly($this->argument('name'));
-        $domain = $this->option('domain') ?? config('ddd-scaffold.default_domain', 'Backoffice');
+        $domain = $this->option('domain') ?? config('ddd-scaffold.default_domain', 'MyProject');
         $framework = config('ddd-scaffold.testing_framework', 'phpunit');
 
         // Determine stub file based on framework

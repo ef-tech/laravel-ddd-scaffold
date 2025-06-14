@@ -14,7 +14,7 @@ class MakeRepositoryCommand extends Command
     public function handle(): void
     {
         $name = Str::studly($this->argument('name'));
-        $domain = $this->option('domain') ?? config('ddd-scaffold.default_domain', 'App');
+        $domain = $this->option('domain') ?? config('ddd-scaffold.default_domain', 'MyProject');
 
         $interfaceName = $name.'RepositoryInterface';
         $eloquentName = 'Eloquent'.$name.'Repository';

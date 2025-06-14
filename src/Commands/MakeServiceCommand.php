@@ -18,7 +18,7 @@ class MakeServiceCommand extends Command
     public function handle(): void
     {
         $name = Str::studly($this->argument('name'));
-        $domain = $this->option('domain') ?? config('ddd-scaffold.default_domain', 'App');
+        $domain = $this->option('domain') ?? config('ddd-scaffold.default_domain', 'MyProject');
         $type = $this->option('type') === 'domain' ? 'Domain' : 'Application';
 
         $namespace = Str::studly($domain)."\\{$type}\\Services";

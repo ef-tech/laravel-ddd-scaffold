@@ -17,7 +17,7 @@ class MakeAggregateCommand extends Command
     public function handle(): void
     {
         $name = Str::studly($this->argument('name'));
-        $domain = $this->option('domain') ?? config('ddd-scaffold.default_domain', 'Backoffice');
+        $domain = $this->option('domain') ?? config('ddd-scaffold.default_domain', 'MyProject');
         $stubPath = (config('ddd-scaffold.stubs_path') ?? __DIR__.'/../../stubs').'/aggregate.stub';
 
         if (! File::exists($stubPath)) {

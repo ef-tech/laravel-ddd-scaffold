@@ -17,7 +17,7 @@ class MakeQueryCommand extends Command
     public function handle(): void
     {
         $name = Str::studly($this->argument('name'));
-        $domain = $this->option('domain') ?? config('ddd-scaffold.default_domain', 'App');
+        $domain = $this->option('domain') ?? config('ddd-scaffold.default_domain', 'MyProject');
 
         $namespace = Str::studly($domain).'\\Application\\Queries';
         $path = base_path("{$domain}/Application/Queries/{$name}.php");

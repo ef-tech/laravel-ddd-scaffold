@@ -17,7 +17,7 @@ class MakeConstantCommand extends Command
     public function handle(): void
     {
         $name = Str::studly($this->argument('name'));
-        $domain = $this->option('domain') ?? config('ddd-scaffold.default_domain', 'App');
+        $domain = $this->option('domain') ?? config('ddd-scaffold.default_domain', 'MyProject');
 
         $namespace = Str::studly($domain).'\\Support\\Constants';
         $path = base_path("{$domain}/Support/Constants/{$name}.php");

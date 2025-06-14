@@ -28,7 +28,7 @@ class MakeMapperCommand extends Command
         }
 
         $name = Str::studly($this->argument('name'));
-        $domain = $this->option('domain') ?? config('ddd-scaffold.default_domain', 'Backoffice');
+        $domain = $this->option('domain') ?? config('ddd-scaffold.default_domain', 'MyProject');
         $entityFqcn = str_replace('/', '\\', $this->option('entity') ?? "{$domain}/Domain/Entity/DummyEntity");
         $modelFqcn = str_replace('/', '\\', $this->option('model') ?? 'App/Models/DummyModel');
         $dtoFqcn = str_replace('/', '\\', $this->option('dto') ?? "{$domain}/Application/DTOs/DummyEntity");

@@ -17,7 +17,7 @@ class MakeRuleCommand extends Command
     public function handle(): void
     {
         $name = Str::studly($this->argument('name'));
-        $domain = $this->option('domain') ?? config('ddd-scaffold.default_domain', 'App');
+        $domain = $this->option('domain') ?? config('ddd-scaffold.default_domain', 'MyProject');
 
         $namespace = Str::studly($domain).'\\Domain\\Rules';
         $path = base_path("{$domain}/Domain/Rules/{$name}.php");
