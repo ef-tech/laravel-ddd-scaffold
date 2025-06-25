@@ -68,6 +68,7 @@ Backoffice/
 │   ├── Exceptions/
 │   ├── Mappers/
 │   ├── Presenters/
+│   │   └── Entities/
 │   ├── Queries/
 │   ├── Services/
 │   └── UseCases/
@@ -104,7 +105,7 @@ Initializes the base DDD structure for your project.
 php artisan ddd:init {name=myproject}
 ```
 
-- `name`: The domain name to create (defaults to "myproject" if not provided)
+- `name`: The project name
 
 ### ddd:make:usecase
 
@@ -114,8 +115,8 @@ Generates a new UseCase class in the Application layer.
 php artisan ddd:make:usecase {name} [--domain=]
 ```
 
-- `name`: The name of the UseCase class (e.g., CreateUser or User/UpdateProfile)
-- `--domain`: Optional. The domain name to use (defaults to the value in config)
+- `name`: The name of the use case class
+- `--domain`: The domain name
 
 Examples:
 
@@ -132,8 +133,8 @@ Generates a Data Transfer Object class.
 php artisan ddd:make:dto {name} [--domain=]
 ```
 
-- `name`: The name of the DTO class (e.g., UserData or User/ProfileData)
-- `--domain`: Optional. The domain name to use (defaults to the value in config)
+- `name`: The name of the DTO class
+- `--domain`: The domain name
 
 Examples:
 
@@ -150,8 +151,8 @@ Generates a Value Object class.
 php artisan ddd:make:vo {name} [--domain=]
 ```
 
-- `name`: The name of the Value Object class (e.g., Email or User/Address)
-- `--domain`: Optional. The domain name to use (defaults to the value in config)
+- `name`: The name of the value object class
+- `--domain`: The domain name
 
 Examples:
 
@@ -168,8 +169,8 @@ Generates a Entity class.
 php artisan ddd:make:entity {name} [--domain=]
 ```
 
-- `name`: The name of the Entity class (e.g., User or Order/LineItem)
-- `--domain`: Optional. The domain name to use (defaults to the value in config)
+- `name`: The name of the entity class
+- `--domain`: The domain name
 
 Examples:
 
@@ -186,8 +187,8 @@ Generates a Aggregate class.
 php artisan ddd:make:aggregate {name} [--domain=]
 ```
 
-- `name`: The name of the Aggregate class (e.g., User or Order/LineItem)
-- `--domain`: Optional. The domain name to use (defaults to the value in config)
+- `name`: The name of the aggregate
+- `--domain`: The domain name
 
 Examples:
 
@@ -204,8 +205,8 @@ Generates a Repository interface and implementation.
 php artisan ddd:make:repository {name} [--domain=]
 ```
 
-- `name`: The name of the Repository (e.g., User or Order/OrderItem)
-- `--domain`: Optional. The domain name to use (defaults to the value in config)
+- `name`: The name of the repository
+- `--domain`: The domain name
 
 Examples:
 
@@ -222,10 +223,9 @@ Generates an Enum class.
 php artisan ddd:make:enum {name} [--domain=] [--type=domain]
 ```
 
-- `name`: The name of the Enum class (e.g., OrderStatus or User/Role)
-- `--domain`: Optional. The domain name to use (defaults to the value in config)
-- `--type`: Optional. The layer where the enum will be created (defaults to 'domain'). Possible values: 'domain', '
-  application', 'infrastructure', or 'support'
+- `name`: The name of the enum
+- `--domain`: The domain name
+- `--type`: The layer of the enum
 
 Examples:
 
@@ -243,10 +243,9 @@ Generates a Service class.
 php artisan ddd:make:service {name} [--domain=] [--type=application]
 ```
 
-- `name`: The name of the Service class (e.g., PaymentProcessor or Order/ShippingCalculator)
-- `--domain`: Optional. The domain name to use (defaults to the value in config)
-- `--type`: Optional. The type of service to create (defaults to 'application'). Possible values: 'application' or '
-  domain'
+- `name`: The name of the service class
+- `--domain`: The domain name
+- `--type`: The layer of the service
 
 Examples:
 
@@ -264,10 +263,9 @@ Generates a custom Exception class.
 php artisan ddd:make:exception {name} [--domain=] [--type=domain]
 ```
 
-- `name`: The name of the Exception class (e.g., InvalidOrderException or User/AuthenticationFailed)
-- `--domain`: Optional. The domain name to use (defaults to the value in config)
-- `--type`: Optional. The layer where the exception will be created (defaults to 'domain'). Possible values: 'domain', '
-  application', 'infrastructure', or 'support'
+- `name`: The name of the exception class
+- `--domain`: The domain name
+- `--type`: The layer of the exception
 
 Examples:
 
@@ -285,8 +283,8 @@ Generates a Query class for read operations.
 php artisan ddd:make:query {name} [--domain=]
 ```
 
-- `name`: The name of the Query class (e.g., GetUserList or Order/FindByCustomer)
-- `--domain`: Optional. The domain name to use (defaults to the value in config)
+- `name`: The name of the query class
+- `--domain`: The domain name
 
 Examples:
 
@@ -303,8 +301,8 @@ Generates a Presenter class for formatting output.
 php artisan ddd:make:presenter {name} [--domain=]
 ```
 
-- `name`: The name of the Presenter class (e.g., UserPresenter or Order/OrderSummaryPresenter)
-- `--domain`: Optional. The domain name to use (defaults to the value in config)
+- `name`: The name of the presenter class
+- `--domain`: The domain name
 
 Examples:
 
@@ -321,11 +319,11 @@ Generates a Mapper class for converting between Domain Entities and either Model
 php artisan ddd:make:mapper {name} [--domain=] [--model=] [--entity=] [--dto=]
 ```
 
-- `name`: The name of the Mapper class (e.g., CustomerMapper or User/CustomerMapper)
-- `--domain`: Optional. The domain name to use (defaults to the value in config)
-- `--model`: Optional. The FQCN of the Laravel model (e.g., App/Models/User). Use only when mapping to/from models.
-- `--entity`: Required. The FQCN of the domain Entity class (e.g., Backoffice/Domain/Entities/Customer)
-- `--dto`: Optional. The FQCN of the DTO class. Use only when mapping to/from DTOs.
+- `name`: The name of the mapper class
+- `--domain`: The domain name
+- `--model`: The eloquent model
+- `--entity`: The domain entity
+- `--dto`: The DTO class
 
 ⚠️ You must specify either `--model` or `--dto`, not both.
 
@@ -344,8 +342,8 @@ Generates a validation Rule class.
 php artisan ddd:make:rule {name} [--domain=]
 ```
 
-- `name`: The name of the Rule class (e.g., StrongPassword or Order/ValidDeliveryDate)
-- `--domain`: Optional. The domain name to use (defaults to the value in config)
+- `name`: The name of the rule class
+- `--domain`: The domain name
 
 Examples:
 
@@ -362,8 +360,8 @@ Generates a Constants class.
 php artisan ddd:make:constant {name} [--domain=]
 ```
 
-- `name`: The name of the Constants class (e.g., OrderStatuses or User/Permissions)
-- `--domain`: Optional. The domain name to use (defaults to the value in config)
+- `name`: The name of the constant class
+- `--domain`: The domain name
 
 Examples:
 
@@ -380,8 +378,8 @@ Generates a test class for your components.
 php artisan ddd:make:test {name} [--domain=]
 ```
 
-- `name`: The name of the test class or the target class path (e.g., CreateUserUseCaseTest or User/EmailValueObjectTest)
-- `--domain`: Optional. The domain name to use (defaults to the value in config)
+- `name`: The name of the test class
+- `--domain`: The domain name
 
 The test format (PHPUnit or Pest) is determined by the `testing_framework` setting in your config file.
 
