@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 class MakeRepositoryCommand extends Command
 {
     protected $signature = 'ddd:make:repository {name : e.g. Task} {--domain= : Domain name (default from config)}';
-    protected $description = 'Generate RepositoryInterface + EloquentRepository implementation';
+    protected $description = 'Create a new repository class and interface.';
 
     public function handle(): void
     {

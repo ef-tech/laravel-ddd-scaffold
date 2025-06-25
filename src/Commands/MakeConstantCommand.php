@@ -12,7 +12,7 @@ class MakeConstantCommand extends Command
         {name : Constant class name (e.g. SystemLimits)}
         {--domain= : Domain name (default from config)}';
 
-    protected $description = 'Generate a new constants class in Support/Constants';
+    protected $description = 'Create a new constant class.';
 
     public function handle(): void
     {

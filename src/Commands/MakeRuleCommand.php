@@ -12,7 +12,7 @@ class MakeRuleCommand extends Command
         {name : Rule class name (e.g. TaskStatusRule)}
         {--domain= : Domain name (default from config)}';
 
-    protected $description = 'Generate a new domain rule class';
+    protected $description = 'Create a new domain rule class.';
 
     public function handle(): void
     {

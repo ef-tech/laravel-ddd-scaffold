@@ -13,7 +13,7 @@ class MakeExceptionCommand extends Command
         {--domain= : Domain name (default from config)} 
         {--type=domain : domain, application, infrastructure, or support}';
 
-    protected $description = 'Generate a new exception class in the specified layer';
+    protected $description = 'Create a new exception class.';
 
     public function handle(): void
     {

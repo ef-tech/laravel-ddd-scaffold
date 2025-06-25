@@ -15,7 +15,7 @@ class MakeMapperCommand extends Command
         {--model= : Eloquent model FQCN using / (e.g. App/Models/Customer)}
         {--dto= : DTO class FQCN using / (e.g. Backoffice/Application/DTO/CustomerData)}';
 
-    protected $description = 'Generate a mapper for converting between Eloquent model and Domain entity';
+    protected $description = 'Create a new mapper class.';
 
     public function handle(): void
     {

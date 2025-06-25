@@ -12,7 +12,7 @@ class MakeQueryCommand extends Command
         {name : Query class name (e.g. GetTaskListQuery)}
         {--domain= : Domain name (default from config)}';
 
-    protected $description = 'Generate a new application query class';
+    protected $description = 'Create a new query class.';
 
     public function handle(): void
     {

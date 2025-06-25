@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 class MakeUseCaseCommand extends Command
 {
     protected $signature = 'ddd:make:usecase {name : e.g. CreateTask or Admin/CreateTask} {--domain= : Domain name (default from config)}';
-    protected $description = 'Generate a new UseCase class under Application/UseCases';
+    protected $description = 'Create a new use case class.';
 
     public function handle(): void
     {

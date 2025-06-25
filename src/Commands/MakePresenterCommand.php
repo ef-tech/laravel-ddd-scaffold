@@ -12,7 +12,7 @@ class MakePresenterCommand extends Command
         {name : Presenter class name (e.g. TaskPresenter)}
         {--domain= : Domain name (default from config)}';
 
-    protected $description = 'Generate a new application presenter class';
+    protected $description = 'Create a new presenter class.';
 
     public function handle(): void
     {

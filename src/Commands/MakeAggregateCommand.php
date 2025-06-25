@@ -12,7 +12,7 @@ class MakeAggregateCommand extends Command
         {name : Aggregate class path (e.g. Customer/CustomerAggregate)}
         {--domain= : Domain root (default from config)}';
 
-    protected $description = 'Generate a Domain Aggregate class';
+    protected $description = 'Create a new domain aggregate class.';
 
     public function handle(): void
     {

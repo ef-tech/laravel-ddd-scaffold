@@ -13,7 +13,7 @@ class MakeEnumCommand extends Command
         {--domain= : Domain name (default from config)} 
         {--type=domain : domain, application, infrastructure, or support}';
 
-    protected $description = 'Generate a new backed Enum class';
+    protected $description = 'Create a new enum.';
 
     public function handle(): void
     {

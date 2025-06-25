@@ -12,7 +12,7 @@ class MakeTestCommand extends Command
         {name : Test target class path, e.g. Customer/RegisterCustomerUseCase}
         {--domain= : Domain root (default from config)}';
 
-    protected $description = 'Generate a test class for a use case or domain class';
+    protected $description = 'Create a new test class.';
 
     public function handle(): void
     {

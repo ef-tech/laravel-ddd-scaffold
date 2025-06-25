@@ -13,7 +13,7 @@ class MakeServiceCommand extends Command
         {--domain= : Domain name (default from config)} 
         {--type=application : application or domain}';
 
-    protected $description = 'Generate a new ApplicationService or DomainService class';
+    protected $description = 'Create a new service class.';
 
     public function handle(): void
     {
