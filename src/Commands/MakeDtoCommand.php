@@ -18,7 +18,7 @@ class MakeDtoCommand extends Command
 
         $segments = collect(explode('/', $input))->filter()->values();
         $baseClass = $segments->pop();
-        $className = Str::studly($baseClass);
+        $className = Str::studly(Str::finish($baseClass, 'Data'));
 
         $subNamespace = $segments->map(fn($s) => Str::studly($s))->implode('\\');
         $subPath = $segments->implode('/');
