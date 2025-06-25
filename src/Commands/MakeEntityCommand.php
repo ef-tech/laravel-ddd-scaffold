@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 
 class MakeEntityCommand extends Command
 {
-    protected $signature = 'ddd:make:entity {name : e.g. Task} {--domain= : Domain name (default from config)}';
+    protected $signature = 'ddd:make:entity {name : The name of the entity class} {--domain= : The domain name}';
     protected $description = 'Create a new domain entity class.';
 
     public function handle(): void

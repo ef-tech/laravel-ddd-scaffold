@@ -8,9 +8,7 @@ use Illuminate\Support\Str;
 
 class MakeTestCommand extends Command
 {
-    protected $signature = 'ddd:make:test
-        {name : Test target class path, e.g. Customer/RegisterCustomerUseCase}
-        {--domain= : Domain root (default from config)}';
+    protected $signature = 'ddd:make:test {name : The name of the test class} {--domain= : The domain name}';
 
     protected $description = 'Create a new test class.';
 

@@ -8,9 +8,7 @@ use Illuminate\Support\Str;
 
 class MakeRuleCommand extends Command
 {
-    protected $signature = 'ddd:make:rule
-        {name : Rule class name (e.g. TaskStatusRule)}
-        {--domain= : Domain name (default from config)}';
+    protected $signature = 'ddd:make:rule {name : The name of the rule class} {--domain= : The domain name}';
 
     protected $description = 'Create a new domain rule class.';
 

@@ -8,9 +8,7 @@ use Illuminate\Support\Str;
 
 class MakeConstantCommand extends Command
 {
-    protected $signature = 'ddd:make:constant
-        {name : Constant class name (e.g. SystemLimits)}
-        {--domain= : Domain name (default from config)}';
+    protected $signature = 'ddd:make:constant {name : The name of the constant class} {--domain= : The domain name}';
 
     protected $description = 'Create a new constant class.';
 

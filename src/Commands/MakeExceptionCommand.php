@@ -8,10 +8,7 @@ use Illuminate\Support\Str;
 
 class MakeExceptionCommand extends Command
 {
-    protected $signature = 'ddd:make:exception 
-        {name : Exception class name (e.g. TaskNotFoundException)} 
-        {--domain= : Domain name (default from config)} 
-        {--type=domain : domain, application, infrastructure, or support}';
+    protected $signature = 'ddd:make:exception {name : The name of the exception class} {--domain= : The domain name} {--type=domain : The layer of the exception}';
 
     protected $description = 'Create a new exception class.';
 

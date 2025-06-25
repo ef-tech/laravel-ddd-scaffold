@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 
 class MakeValueObjectCommand extends Command
 {
-    protected $signature = 'ddd:make:vo {name : e.g. TaskTitle} {--domain= : Domain name (default from config)}';
+    protected $signature = 'ddd:make:vo {name : The name of the value object class} {--domain= : The domain name}';
     protected $description = 'Create a new value object class.';
 
     public function handle(): void

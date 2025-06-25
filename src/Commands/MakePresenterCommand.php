@@ -8,9 +8,7 @@ use Illuminate\Support\Str;
 
 class MakePresenterCommand extends Command
 {
-    protected $signature = 'ddd:make:presenter
-        {name : Presenter class name (e.g. TaskPresenter)}
-        {--domain= : Domain name (default from config)}';
+    protected $signature = 'ddd:make:presenter {name : The name of the presenter class} {--domain= : The domain name}';
 
     protected $description = 'Create a new presenter class.';
 

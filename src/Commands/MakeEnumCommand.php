@@ -8,10 +8,7 @@ use Illuminate\Support\Str;
 
 class MakeEnumCommand extends Command
 {
-    protected $signature = 'ddd:make:enum 
-        {name : Enum name (e.g. TaskStatus)} 
-        {--domain= : Domain name (default from config)} 
-        {--type=domain : domain, application, infrastructure, or support}';
+    protected $signature = 'ddd:make:enum {name : The name of the enum} {--domain= : The domain name} {--type=domain : The layer of the enum}';
 
     protected $description = 'Create a new enum.';
 

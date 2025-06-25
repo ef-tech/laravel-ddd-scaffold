@@ -8,12 +8,7 @@ use Illuminate\Support\Str;
 
 class MakeMapperCommand extends Command
 {
-    protected $signature = 'ddd:make:mapper
-        {name : Mapper class path (e.g. Customer/CustomerMapper)}
-        {--domain= : Domain root (default from config)}
-        {--entity= : Domain entity FQCN using / (e.g. Backoffice/Domain/Entity/Customer)}
-        {--model= : Eloquent model FQCN using / (e.g. App/Models/Customer)}
-        {--dto= : DTO class FQCN using / (e.g. Backoffice/Application/DTO/CustomerData)}';
+    protected $signature = 'ddd:make:mapper {name : The name of the mapper class} {--domain= : The domain name} {--entity= : The domain entity} {--model= : The eloquent model} {--dto= : The DTO class}';
 
     protected $description = 'Create a new mapper class.';
 

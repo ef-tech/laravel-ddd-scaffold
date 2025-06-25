@@ -8,9 +8,7 @@ use Illuminate\Support\Str;
 
 class MakeQueryCommand extends Command
 {
-    protected $signature = 'ddd:make:query
-        {name : Query class name (e.g. GetTaskListQuery)}
-        {--domain= : Domain name (default from config)}';
+    protected $signature = 'ddd:make:query {name : The name of the query class} {--domain= : The domain name}';
 
     protected $description = 'Create a new query class.';
 

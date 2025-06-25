@@ -8,9 +8,7 @@ use Illuminate\Support\Str;
 
 class MakeAggregateCommand extends Command
 {
-    protected $signature = 'ddd:make:aggregate
-        {name : Aggregate class path (e.g. Customer/CustomerAggregate)}
-        {--domain= : Domain root (default from config)}';
+    protected $signature = 'ddd:make:aggregate {name : The name of the aggregate} {--domain= : The domain name}';
 
     protected $description = 'Create a new domain aggregate class.';
 

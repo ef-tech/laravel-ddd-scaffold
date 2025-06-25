@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 
 class MakeDtoCommand extends Command
 {
-    protected $signature = 'ddd:make:dto {name : e.g. TaskData or Admin/TaskData} {--domain= : Domain name (default from config)}';
+    protected $signature = 'ddd:make:dto {name : The name of the DTO class} {--domain= : The domain name}';
     protected $description = 'Create a new data transfer object class.';
 
     public function handle(): void

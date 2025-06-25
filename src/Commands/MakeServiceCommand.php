@@ -8,10 +8,7 @@ use Illuminate\Support\Str;
 
 class MakeServiceCommand extends Command
 {
-    protected $signature = 'ddd:make:service 
-        {name : Service name (e.g. CreateTaskService)} 
-        {--domain= : Domain name (default from config)} 
-        {--type=application : application or domain}';
+    protected $signature = 'ddd:make:service {name : The name of the service class} {--domain= : The domain name} {--type=application : The layer of the service}';
 
     protected $description = 'Create a new service class.';
 
