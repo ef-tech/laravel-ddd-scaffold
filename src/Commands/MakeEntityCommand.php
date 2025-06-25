@@ -13,14 +13,22 @@ class MakeEntityCommand extends Command
 
     public function handle(): void
     {
-        $name = Str::studly($this->argument('name'));
+        $input = $this->argument('name');
         $domain = $this->option('domain') ?? config('ddd-scaffold.default_domain', 'MyProject');
 
-        $namespace = Str::studly($domain).'\\Domain\\Entities';
-        $path = base_path("{$domain}/Domain/Entities/{$name}.php");
+        $segments = collect(explode('/', $input))->filter()->values();
+        $baseClass = $segments->pop();
+        $className = Str::studly($baseClass);
+
+        $subNamespace = $segments->map(fn($s) => Str::studly($s))->implode('\\');
+        $subPath = $segments->implode('/');
+
+        $namespace = Str::studly($domain).'\\Domain\\Entities'.($subNamespace ? "\\{$subNamespace}" : '');
+        $basePath = base_path("{$domain}/Domain/Entities");
+        $path = base_path("{$domain}/Domain/Entities".($subPath ? "/{$subPath}" : '')."/{$className}.php");
 
         if (File::exists($path)) {
-            $this->error("{$name} already exists at: {$path}");
+            $this->error("{$className} already exists at: {$path}");
             return;
         }
 
@@ -33,7 +41,7 @@ class MakeEntityCommand extends Command
         $stub = File::get($stubPath);
         $content = str_replace(
             ['{{ namespace }}', '{{ class }}'],
-            [$namespace, $name],
+            [$namespace, $className],
             $stub
         );
 
@@ -45,6 +53,6 @@ class MakeEntityCommand extends Command
             File::delete($gitkeepPath);
         }
 
-        $this->info("Domain Entity [{$name}] created at: {$path}");
+        $this->info("Domain Entity [{$className}] created at: {$path}");
     }
 }
