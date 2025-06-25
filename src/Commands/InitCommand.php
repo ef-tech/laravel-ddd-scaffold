@@ -21,6 +21,7 @@ class InitCommand extends Command
             '/Application/Exceptions',
             '/Application/Mappers',
             '/Application/Presenters',
+            '/Application/Presenters/Entities',
             '/Application/Queries',
             '/Application/Services',
             '/Application/UseCases',
