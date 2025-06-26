@@ -23,12 +23,14 @@ class MakeValueObjectCommand extends Command
 
         if (File::exists($path)) {
             $this->error("{$name} already exists at: {$path}");
+
             return;
         }
 
         $stubPath = (config('ddd-scaffold.stubs_path') ?? __DIR__.'/../../stubs').'/vo.stub';
         if (! File::exists($stubPath)) {
             $this->error("Stub file not found: {$stubPath}");
+
             return;
         }
 
@@ -46,6 +48,6 @@ class MakeValueObjectCommand extends Command
         // up to the domain root directory
         $this->deleteGitkeepFilesRecursively(dirname($path), base_path($domain));
 
-        $this->info("[ValueObject] [{$name}] created at: " . str_replace(base_path() . '/', '', $path));
+        $this->info("[ValueObject] [{$name}] created at: ".str_replace(base_path().'/', '', $path));
     }
 }

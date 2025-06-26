@@ -23,6 +23,7 @@ class MakeExceptionCommand extends Command
         $validTypes = ['domain', 'application', 'infrastructure', 'support'];
         if (! in_array($type, $validTypes)) {
             $this->error("Invalid type: {$type}. Allowed types: ".implode(', ', $validTypes));
+
             return;
         }
 
@@ -31,12 +32,14 @@ class MakeExceptionCommand extends Command
 
         if (File::exists($path)) {
             $this->error("{$name} already exists at: {$path}");
+
             return;
         }
 
         $stubPath = (config('ddd-scaffold.stubs_path') ?? __DIR__.'/../../stubs').'/exception.stub';
         if (! File::exists($stubPath)) {
             $this->error("Stub file not found: {$stubPath}");
+
             return;
         }
 
@@ -50,11 +53,10 @@ class MakeExceptionCommand extends Command
         File::ensureDirectoryExists(dirname($path));
         File::put($path, $content);
 
-
         // Recursively delete .gitkeep files from the directory and its parent directories
         // up to the domain root directory
         $this->deleteGitkeepFilesRecursively(dirname($path), base_path($domain));
 
-        $this->info("[Exception] [{$name}] created at: " . str_replace(base_path() . '/', '', $path));
+        $this->info("[Exception] [{$name}] created at: ".str_replace(base_path().'/', '', $path));
     }
 }

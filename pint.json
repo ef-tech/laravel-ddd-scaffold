@@ -1,0 +1,13 @@
+{
+    "preset": "laravel",
+    "rules": {
+        "blank_line_after_namespace": true,
+        "class_attributes_separation": {
+            "elements": {
+                "method": "one"
+            }
+        },
+        "ordered_imports": true,
+        "single_quote": true
+    }
+}

@@ -20,7 +20,8 @@ class MakeMapperCommand extends Command
         $isModel = $this->option('model') !== null;
 
         if ($isDto && $isModel) {
-            $this->error("You cannot specify both --dto and --model options at the same time.");
+            $this->error('You cannot specify both --dto and --model options at the same time.');
+
             return;
         }
 
@@ -37,6 +38,7 @@ class MakeMapperCommand extends Command
 
         if (! File::exists($stubPath)) {
             $this->error("Stub file not found: {$stubPath}");
+
             return;
         }
 
@@ -46,12 +48,13 @@ class MakeMapperCommand extends Command
 
         if (File::exists($outputPath)) {
             $this->error("Mapper already exists: {$outputPath}");
+
             return;
         }
 
         File::ensureDirectoryExists(dirname($outputPath));
 
-        $namespace = Str::studly($domain)."\\".($isDto ? 'Application\\Mappers' : 'Infrastructure\\Mappers').
+        $namespace = Str::studly($domain).'\\'.($isDto ? 'Application\\Mappers' : 'Infrastructure\\Mappers').
             (Str::contains($name, '/') ? '\\'.str_replace('/', '\\', dirname($name)) : '');
         $class = class_basename($name);
 
@@ -76,11 +79,10 @@ class MakeMapperCommand extends Command
 
         File::put($outputPath, $rendered);
 
-
         // Recursively delete .gitkeep files from the directory and its parent directories
         // up to the domain root directory
         $this->deleteGitkeepFilesRecursively(dirname($outputPath), base_path($domain));
 
-        $this->info("[Mapper] [{$class}] created at: " . str_replace(base_path() . '/', '', $outputPath));
+        $this->info("[Mapper] [{$class}] created at: ".str_replace(base_path().'/', '', $outputPath));
     }
 }

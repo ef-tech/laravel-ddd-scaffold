@@ -11,7 +11,6 @@ trait DeletesGitkeepFiles
      *
      * @param  string  $directory  The directory to start deleting .gitkeep files from
      * @param  string|null  $stopAt  The directory to stop at (will not delete .gitkeep files above this directory)
-     * @return void
      */
     protected function deleteGitkeepFilesRecursively(string $directory, ?string $stopAt = null): void
     {

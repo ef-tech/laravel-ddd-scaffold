@@ -38,7 +38,7 @@ class MakeRepositoryCommand extends Command
             );
             File::ensureDirectoryExists(dirname($interfacePath));
             File::put($interfacePath, $content);
-            $this->info("Created: " . str_replace(base_path() . '/', '', $interfacePath));
+            $this->info('Created: '.str_replace(base_path().'/', '', $interfacePath));
 
             // Recursively delete .gitkeep files from the directory and its parent directories
             // up to the domain root directory
@@ -61,7 +61,8 @@ class MakeRepositoryCommand extends Command
             );
             File::ensureDirectoryExists(dirname($eloquentPath));
             File::put($eloquentPath, $content);
-            $this->info("[EloquentRepository] [{$eloquentName}] created at: " . str_replace(base_path() . '/', '', $eloquentPath));
+            $this->info("[EloquentRepository] [{$eloquentName}] created at: ".str_replace(base_path().'/', '',
+                    $eloquentPath));
 
             // Recursively delete .gitkeep files from the directory and its parent directories
             // up to the domain root directory

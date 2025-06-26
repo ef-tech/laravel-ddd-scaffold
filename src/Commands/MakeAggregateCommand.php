@@ -22,6 +22,7 @@ class MakeAggregateCommand extends Command
 
         if (! File::exists($stubPath)) {
             $this->error("Stub file not found: {$stubPath}");
+
             return;
         }
 
@@ -30,12 +31,13 @@ class MakeAggregateCommand extends Command
 
         if (File::exists($path)) {
             $this->error("Aggregate already exists: {$path}");
+
             return;
         }
 
         File::ensureDirectoryExists(dirname($path));
 
-        $namespace = Str::studly($domain)."\\Domain\\Aggregates".
+        $namespace = Str::studly($domain).'\\Domain\\Aggregates'.
             (Str::contains($name, '/') ? '\\'.str_replace('/', '\\', dirname($name)) : '');
         $class = class_basename($name);
 
@@ -53,6 +55,6 @@ class MakeAggregateCommand extends Command
         // up to the domain root directory
         $this->deleteGitkeepFilesRecursively(dirname($path), base_path($domain));
 
-        $this->info("[Aggregate] [{$class}] created at: " . str_replace(base_path() . '/', '', $path));
+        $this->info("[Aggregate] [{$class}] created at: ".str_replace(base_path().'/', '', $path));
     }
 }

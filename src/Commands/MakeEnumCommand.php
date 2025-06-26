@@ -23,6 +23,7 @@ class MakeEnumCommand extends Command
         $validTypes = ['domain', 'application', 'infrastructure', 'support'];
         if (! in_array($type, $validTypes)) {
             $this->error("Invalid type: {$type}. Allowed types: ".implode(', ', $validTypes));
+
             return;
         }
 
@@ -31,12 +32,14 @@ class MakeEnumCommand extends Command
 
         if (File::exists($path)) {
             $this->error("{$name} already exists at: {$path}");
+
             return;
         }
 
         $stubPath = (config('ddd-scaffold.stubs_path') ?? __DIR__.'/../../stubs').'/enum.stub';
         if (! File::exists($stubPath)) {
             $this->error("Stub file not found: {$stubPath}");
+
             return;
         }
 
@@ -54,6 +57,6 @@ class MakeEnumCommand extends Command
         // up to the domain root directory
         $this->deleteGitkeepFilesRecursively(dirname($path), base_path($domain));
 
-        $this->info("[Enum] [{$name}] created at: " . str_replace(base_path() . '/', '', $path));
+        $this->info("[Enum] [{$name}] created at: ".str_replace(base_path().'/', '', $path));
     }
 }

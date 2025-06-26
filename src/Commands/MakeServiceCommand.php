@@ -25,6 +25,7 @@ class MakeServiceCommand extends Command
 
         if (File::exists($path)) {
             $this->error("{$name} already exists at: {$path}");
+
             return;
         }
 
@@ -33,6 +34,7 @@ class MakeServiceCommand extends Command
 
         if (! File::exists($stubPath)) {
             $this->error("Stub file not found: {$stubPath}");
+
             return;
         }
 
@@ -50,6 +52,6 @@ class MakeServiceCommand extends Command
         // up to the domain root directory
         $this->deleteGitkeepFilesRecursively(dirname($path), base_path($domain));
 
-        $this->info("[{$type}Service] [{$name}] created at: " . str_replace(base_path() . '/', '', $path));
+        $this->info("[{$type}Service] [{$name}] created at: ".str_replace(base_path().'/', '', $path));
     }
 }

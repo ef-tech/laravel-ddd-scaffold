@@ -44,12 +44,14 @@ class MakeEntityCommand extends Command
 
         if (File::exists($path)) {
             $this->error("{$className} already exists at: {$path}");
+
             return;
         }
 
         $stubPath = (config('ddd-scaffold.stubs_path') ?? __DIR__.'/../../stubs').'/entity.stub';
         if (! File::exists($stubPath)) {
             $this->error("Stub file not found: {$stubPath}");
+
             return;
         }
 
@@ -67,6 +69,6 @@ class MakeEntityCommand extends Command
         // up to the domain root directory
         $this->deleteGitkeepFilesRecursively(dirname($path), base_path($domain));
 
-        $this->info("[{$entityType} Entity] [{$className}] created at: " . str_replace(base_path() . '/', '', $path));
+        $this->info("[{$entityType} Entity] [{$className}] created at: ".str_replace(base_path().'/', '', $path));
     }
 }

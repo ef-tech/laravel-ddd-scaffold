@@ -31,12 +31,14 @@ class MakeDtoCommand extends Command
 
         if (File::exists($path)) {
             $this->error("{$className} already exists at {$path}.");
+
             return;
         }
 
         $stubPath = (config('ddd-scaffold.stubs_path') ?? __DIR__.'/../../stubs').'/dto.stub';
         if (! File::exists($stubPath)) {
             $this->error("Stub file not found: {$stubPath}");
+
             return;
         }
 
@@ -54,6 +56,6 @@ class MakeDtoCommand extends Command
         // up to the domain root directory
         $this->deleteGitkeepFilesRecursively(dirname($path), base_path($domain));
 
-        $this->info("[DTO] [{$className}] created at: " . str_replace(base_path() . '/', '', $path));
+        $this->info("[DTO] [{$className}] created at: ".str_replace(base_path().'/', '', $path));
     }
 }

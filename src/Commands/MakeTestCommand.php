@@ -30,22 +30,24 @@ class MakeTestCommand extends Command
 
         if (! File::exists($stubPath)) {
             $this->error("Stub file not found: {$stubPath}");
+
             return;
         }
 
         $isPest = $framework === 'pest';
         $relativePath = str_replace('\\', '/', $name).'Test.php';
 
-        $outputPath = base_path("tests/".Str::studly($domain)."/{$relativePath}");
+        $outputPath = base_path('tests/'.Str::studly($domain)."/{$relativePath}");
 
         if (File::exists($outputPath)) {
             $this->error("Test file already exists: {$outputPath}");
+
             return;
         }
 
         File::ensureDirectoryExists(dirname($outputPath));
 
-        $namespace = "Tests\\".Str::studly($domain)."\\".Str::replace('/', '\\', dirname($name));
+        $namespace = 'Tests\\'.Str::studly($domain).'\\'.Str::replace('/', '\\', dirname($name));
         $class = class_basename($name).'Test';
 
         $stub = File::get($stubPath);
@@ -59,8 +61,8 @@ class MakeTestCommand extends Command
 
         // Recursively delete .gitkeep files from the directory and its parent directories
         // up to the domain root directory
-        $this->deleteGitkeepFilesRecursively(dirname($outputPath), base_path("tests/".Str::studly($domain)));
+        $this->deleteGitkeepFilesRecursively(dirname($outputPath), base_path('tests/'.Str::studly($domain)));
 
-        $this->info("[Test] [{$class}] created at: " . str_replace(base_path() . '/', '', $outputPath));
+        $this->info("[Test] [{$class}] created at: ".str_replace(base_path().'/', '', $outputPath));
     }
 }
