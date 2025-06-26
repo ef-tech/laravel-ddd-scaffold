@@ -8,13 +8,14 @@ use Illuminate\Support\Str;
 
 class MakeEntityCommand extends Command
 {
-    protected $signature = 'ddd:make:entity {name : The name of the entity class} {--domain= : The domain name}';
-    protected $description = 'Create a new domain entity class.';
+    protected $signature = 'ddd:make:entity {name : The name of the entity class} {--domain= : The domain name} {--type=domain : The type of the entity (domain, application, presenters)}';
+    protected $description = 'Create a new entity class.';
 
     public function handle(): void
     {
         $input = $this->argument('name');
         $domain = $this->option('domain') ?? config('ddd-scaffold.default_domain', 'MyProject');
+        $type = $this->option('type');
 
         $segments = collect(explode('/', $input))->filter()->values();
         $baseClass = $segments->pop();
@@ -23,9 +24,21 @@ class MakeEntityCommand extends Command
         $subNamespace = $segments->map(fn($s) => Str::studly($s))->implode('\\');
         $subPath = $segments->implode('/');
 
-        $namespace = Str::studly($domain).'\\Domain\\Entities'.($subNamespace ? "\\{$subNamespace}" : '');
-        $basePath = base_path("{$domain}/Domain/Entities");
-        $path = base_path("{$domain}/Domain/Entities".($subPath ? "/{$subPath}" : '')."/{$className}.php");
+        $baseNamespace = Str::studly($domain);
+        $basePath = base_path($domain);
+
+        if ($type === 'application' || $type === 'presenters') {
+            $layerNamespace = 'Application\\Presenters\\Entities';
+            $layerPath = 'Application/Presenters/Entities';
+            $entityType = 'Application';
+        } else {
+            $layerNamespace = 'Domain\\Entities';
+            $layerPath = 'Domain/Entities';
+            $entityType = 'Domain';
+        }
+
+        $namespace = $baseNamespace.'\\'.$layerNamespace.($subNamespace ? "\\{$subNamespace}" : '');
+        $path = $basePath."/{$layerPath}".($subPath ? "/{$subPath}" : '')."/{$className}.php";
 
         if (File::exists($path)) {
             $this->error("{$className} already exists at: {$path}");
@@ -53,6 +66,6 @@ class MakeEntityCommand extends Command
             File::delete($gitkeepPath);
         }
 
-        $this->info("Domain Entity [{$className}] created at: {$path}");
+        $this->info("{$entityType} Entity [{$className}] created at: {$path}");
     }
 }
