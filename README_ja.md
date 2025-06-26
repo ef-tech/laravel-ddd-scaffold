@@ -99,7 +99,7 @@ Backoffice/
 プロジェクトの基本的なDDD構造を初期化します。
 
 ```bash
-php artisan ddd:init {name=myproject}
+php artisan ddd:init {name=MyProject}
 ```
 
 - `name`: プロジェクト名

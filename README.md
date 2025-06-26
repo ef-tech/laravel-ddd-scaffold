@@ -102,7 +102,7 @@ Backoffice/
 Initializes the base DDD structure for your project.
 
 ```bash
-php artisan ddd:init {name=myproject}
+php artisan ddd:init {name=MyProject}
 ```
 
 - `name`: The project name
