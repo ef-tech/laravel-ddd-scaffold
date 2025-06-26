@@ -163,17 +163,19 @@ php artisan ddd:make:vo User/Address
 エンティティ（Entity）クラスを生成します。
 
 ```bash
-php artisan ddd:make:entity {name} [--domain=]
+php artisan ddd:make:entity {name} [--domain=] [--type=domain]
 ```
 
 - `name`: エンティティクラスの名前
 - `--domain`: ドメイン名
+- `--type`: エンティティのレイヤー（domain, application, presenters）
 
 例：
 
 ```bash
 php artisan ddd:make:entity User
 php artisan ddd:make:entity Order/LineItem
+php artisan ddd:make:entity UserPresenter --type=presenters
 ```
 
 ### ddd:make:aggregate

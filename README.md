@@ -163,20 +163,22 @@ php artisan ddd:make:vo User/Address
 
 ### ddd:make:entity
 
-Generates a Entity class.
+Generates an Entity class.
 
 ```bash
-php artisan ddd:make:entity {name} [--domain=]
+php artisan ddd:make:entity {name} [--domain=] [--type=domain]
 ```
 
 - `name`: The name of the entity class
 - `--domain`: The domain name
+- `--type`: The layer of the entity (domain, application, presenters)
 
 Examples:
 
 ```bash
 php artisan ddd:make:entity User
 php artisan ddd:make:entity Order/LineItem
+php artisan ddd:make:entity UserPresenter --type=presenters
 ```
 
 ### ddd:make:aggregate
