@@ -46,6 +46,6 @@ class MakePresenterCommand extends Command
             File::delete($gitkeepPath);
         }
 
-        $this->info("[Presenter] [{$name}] created at: {$path}");
+        $this->info("[Presenter] [{$name}] created at: " . str_replace(base_path() . '/', '', $path));
     }
 }

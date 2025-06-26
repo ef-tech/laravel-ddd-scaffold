@@ -49,6 +49,6 @@ class MakeServiceCommand extends Command
             File::delete($gitkeepPath);
         }
 
-        $this->info("[{$type}Service] [{$name}] created at: {$path}");
+        $this->info("[{$type}Service] [{$name}] created at: " . str_replace(base_path() . '/', '', $path));
     }
 }

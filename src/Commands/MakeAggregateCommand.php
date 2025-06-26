@@ -52,6 +52,6 @@ class MakeAggregateCommand extends Command
             File::delete($gitkeepPath);
         }
 
-        $this->info("[Aggregate] [{$class}] created at: {$path}");
+        $this->info("[Aggregate] [{$class}] created at: " . str_replace(base_path() . '/', '', $path));
     }
 }

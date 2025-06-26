@@ -46,6 +46,6 @@ class MakeQueryCommand extends Command
             File::delete($gitkeepPath);
         }
 
-        $this->info("[Query] [{$name}] created at: {$path}");
+        $this->info("[Query] [{$name}] created at: " . str_replace(base_path() . '/', '', $path));
     }
 }

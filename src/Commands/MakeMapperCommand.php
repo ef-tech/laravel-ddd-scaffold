@@ -74,6 +74,6 @@ class MakeMapperCommand extends Command
 
         File::put($outputPath, $rendered);
 
-        $this->info("[Mapper] [{$class}] created at: {$outputPath}");
+        $this->info("[Mapper] [{$class}] created at: " . str_replace(base_path() . '/', '', $outputPath));
     }
 }

@@ -53,6 +53,6 @@ class MakeDtoCommand extends Command
             File::delete($gitkeepPath);
         }
 
-        $this->info("[DTO] [{$className}] created at: {$path}");
+        $this->info("[DTO] [{$className}] created at: " . str_replace(base_path() . '/', '', $path));
     }
 }

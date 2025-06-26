@@ -54,6 +54,6 @@ class MakeExceptionCommand extends Command
             File::delete($gitkeepPath);
         }
 
-        $this->info("[Exception] [{$name}] created at: {$path}");
+        $this->info("[Exception] [{$name}] created at: " . str_replace(base_path() . '/', '', $path));
     }
 }

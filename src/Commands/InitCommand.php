@@ -66,7 +66,7 @@ class InitCommand extends Command
         $configPath = config_path('ddd-scaffold.php');
 
         if (File::exists($configPath)) {
-            $this->info("Config file already exists at {$configPath}. Skipping creation.");
+            $this->info("Config file already exists at " . str_replace(base_path() . '/', '', $configPath) . ". Skipping creation.");
             return;
         }
 
@@ -76,6 +76,6 @@ class InitCommand extends Command
         $content = preg_replace("/'default_domain'\s*=>\s*'.*?'/", "'default_domain' => '{$name}'", $content);
         File::put($configPath, $content);
 
-        $this->info("Config file created at {$configPath} with default_domain set to '{$name}'");
+        $this->info("Config file created at " . str_replace(base_path() . '/', '', $configPath) . " with default_domain set to '{$name}'");
     }
 }
