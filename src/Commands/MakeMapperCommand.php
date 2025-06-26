@@ -2,12 +2,14 @@
 
 namespace EfTech\DddScaffold\Commands;
 
+use EfTech\DddScaffold\Traits\DeletesGitkeepFiles;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
 class MakeMapperCommand extends Command
 {
+    use DeletesGitkeepFiles;
     protected $signature = 'ddd:make:mapper {name : The name of the mapper class} {--domain= : The domain name} {--entity= : The domain entity} {--model= : The eloquent model} {--dto= : The DTO class}';
 
     protected $description = 'Create a new mapper class.';
@@ -73,6 +75,11 @@ class MakeMapperCommand extends Command
         );
 
         File::put($outputPath, $rendered);
+
+
+        // Recursively delete .gitkeep files from the directory and its parent directories
+        // up to the domain root directory
+        $this->deleteGitkeepFilesRecursively(dirname($outputPath), base_path($domain));
 
         $this->info("[Mapper] [{$class}] created at: " . str_replace(base_path() . '/', '', $outputPath));
     }

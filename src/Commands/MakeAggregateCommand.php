@@ -2,12 +2,14 @@
 
 namespace EfTech\DddScaffold\Commands;
 
+use EfTech\DddScaffold\Traits\DeletesGitkeepFiles;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
 class MakeAggregateCommand extends Command
 {
+    use DeletesGitkeepFiles;
     protected $signature = 'ddd:make:aggregate {name : The name of the aggregate} {--domain= : The domain name}';
 
     protected $description = 'Create a new domain aggregate class.';
@@ -47,10 +49,9 @@ class MakeAggregateCommand extends Command
         File::ensureDirectoryExists(dirname($path));
         File::put($path, $rendered);
 
-        $gitkeepPath = dirname($path).'/.gitkeep';
-        if (File::exists($gitkeepPath)) {
-            File::delete($gitkeepPath);
-        }
+        // Recursively delete .gitkeep files from the directory and its parent directories
+        // up to the domain root directory
+        $this->deleteGitkeepFilesRecursively(dirname($path), base_path($domain));
 
         $this->info("[Aggregate] [{$class}] created at: " . str_replace(base_path() . '/', '', $path));
     }

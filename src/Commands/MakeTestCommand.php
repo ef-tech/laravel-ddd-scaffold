@@ -2,12 +2,14 @@
 
 namespace EfTech\DddScaffold\Commands;
 
+use EfTech\DddScaffold\Traits\DeletesGitkeepFiles;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
 class MakeTestCommand extends Command
 {
+    use DeletesGitkeepFiles;
     protected $signature = 'ddd:make:test {name : The name of the test class} {--domain= : The domain name}';
 
     protected $description = 'Create a new test class.';
@@ -54,6 +56,10 @@ class MakeTestCommand extends Command
         );
 
         File::put($outputPath, $rendered);
+
+        // Recursively delete .gitkeep files from the directory and its parent directories
+        // up to the domain root directory
+        $this->deleteGitkeepFilesRecursively(dirname($outputPath), base_path("tests/".Str::studly($domain)));
 
         $this->info("[Test] [{$class}] created at: " . str_replace(base_path() . '/', '', $outputPath));
     }

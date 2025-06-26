@@ -2,12 +2,14 @@
 
 namespace EfTech\DddScaffold\Commands;
 
+use EfTech\DddScaffold\Traits\DeletesGitkeepFiles;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
 class MakeExceptionCommand extends Command
 {
+    use DeletesGitkeepFiles;
     protected $signature = 'ddd:make:exception {name : The name of the exception class} {--domain= : The domain name} {--type=domain : The layer of the exception}';
 
     protected $description = 'Create a new exception class.';
@@ -49,10 +51,9 @@ class MakeExceptionCommand extends Command
         File::put($path, $content);
 
 
-        $gitkeepPath = dirname($path).'/.gitkeep';
-        if (File::exists($gitkeepPath)) {
-            File::delete($gitkeepPath);
-        }
+        // Recursively delete .gitkeep files from the directory and its parent directories
+        // up to the domain root directory
+        $this->deleteGitkeepFilesRecursively(dirname($path), base_path($domain));
 
         $this->info("[Exception] [{$name}] created at: " . str_replace(base_path() . '/', '', $path));
     }

@@ -2,12 +2,14 @@
 
 namespace EfTech\DddScaffold\Commands;
 
+use EfTech\DddScaffold\Traits\DeletesGitkeepFiles;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
 class MakeConstantCommand extends Command
 {
+    use DeletesGitkeepFiles;
     protected $signature = 'ddd:make:constant {name : The name of the constant class} {--domain= : The domain name}';
 
     protected $description = 'Create a new constant class.';
@@ -41,10 +43,9 @@ class MakeConstantCommand extends Command
         File::ensureDirectoryExists(dirname($path));
         File::put($path, $content);
 
-        $gitkeepPath = dirname($path).'/.gitkeep';
-        if (File::exists($gitkeepPath)) {
-            File::delete($gitkeepPath);
-        }
+        // Recursively delete .gitkeep files from the directory and its parent directories
+        // up to the domain root directory
+        $this->deleteGitkeepFilesRecursively(dirname($path), base_path($domain));
 
         $this->info("[Constant] [{$name}] created at: " . str_replace(base_path() . '/', '', $path));
     }

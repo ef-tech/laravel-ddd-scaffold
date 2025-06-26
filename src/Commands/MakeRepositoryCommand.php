@@ -2,12 +2,14 @@
 
 namespace EfTech\DddScaffold\Commands;
 
+use EfTech\DddScaffold\Traits\DeletesGitkeepFiles;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
 class MakeRepositoryCommand extends Command
 {
+    use DeletesGitkeepFiles;
     protected $signature = 'ddd:make:repository {name : The name of the repository} {--domain= : The domain name}';
     protected $description = 'Create a new repository class and interface.';
 
@@ -38,10 +40,9 @@ class MakeRepositoryCommand extends Command
             File::put($interfacePath, $content);
             $this->info("Created: " . str_replace(base_path() . '/', '', $interfacePath));
 
-            $gitkeepPath = dirname($interfacePath).'/.gitkeep';
-            if (File::exists($gitkeepPath)) {
-                File::delete($gitkeepPath);
-            }
+            // Recursively delete .gitkeep files from the directory and its parent directories
+            // up to the domain root directory
+            $this->deleteGitkeepFilesRecursively(dirname($interfacePath), base_path($domain));
         } else {
             $this->warn("Skipped (already exists): {$interfacePath}");
         }
@@ -62,10 +63,9 @@ class MakeRepositoryCommand extends Command
             File::put($eloquentPath, $content);
             $this->info("[EloquentRepository] [{$eloquentName}] created at: " . str_replace(base_path() . '/', '', $eloquentPath));
 
-            $gitkeepPath = dirname($eloquentPath).'/.gitkeep';
-            if (File::exists($gitkeepPath)) {
-                File::delete($gitkeepPath);
-            }
+            // Recursively delete .gitkeep files from the directory and its parent directories
+            // up to the domain root directory
+            $this->deleteGitkeepFilesRecursively(dirname($eloquentPath), base_path($domain));
         } else {
             $this->warn("Skipped (already exists): {$eloquentPath}");
         }

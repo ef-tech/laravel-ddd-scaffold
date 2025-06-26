@@ -2,12 +2,14 @@
 
 namespace EfTech\DddScaffold\Commands;
 
+use EfTech\DddScaffold\Traits\DeletesGitkeepFiles;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
 class MakeEnumCommand extends Command
 {
+    use DeletesGitkeepFiles;
     protected $signature = 'ddd:make:enum {name : The name of the enum} {--domain= : The domain name} {--type=domain : The layer of the enum}';
 
     protected $description = 'Create a new enum.';
@@ -48,10 +50,9 @@ class MakeEnumCommand extends Command
         File::ensureDirectoryExists(dirname($path));
         File::put($path, $content);
 
-        $gitkeepPath = dirname($path).'/.gitkeep';
-        if (File::exists($gitkeepPath)) {
-            File::delete($gitkeepPath);
-        }
+        // Recursively delete .gitkeep files from the directory and its parent directories
+        // up to the domain root directory
+        $this->deleteGitkeepFilesRecursively(dirname($path), base_path($domain));
 
         $this->info("[Enum] [{$name}] created at: " . str_replace(base_path() . '/', '', $path));
     }
