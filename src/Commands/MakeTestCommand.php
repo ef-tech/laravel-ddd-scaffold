@@ -55,6 +55,6 @@ class MakeTestCommand extends Command
 
         File::put($outputPath, $rendered);
 
-        $this->info("Test created at: {$outputPath}");
+        $this->info("[Test] [{$class}] created at: {$outputPath}");
     }
 }

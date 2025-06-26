@@ -45,6 +45,6 @@ class MakeValueObjectCommand extends Command
             File::delete($gitkeepPath);
         }
 
-        $this->info("ValueObject [{$name}] created at: {$path}");
+        $this->info("[ValueObject] [{$name}] created at: {$path}");
     }
 }

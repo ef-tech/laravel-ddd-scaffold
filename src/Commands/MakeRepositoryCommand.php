@@ -60,7 +60,7 @@ class MakeRepositoryCommand extends Command
             );
             File::ensureDirectoryExists(dirname($eloquentPath));
             File::put($eloquentPath, $content);
-            $this->info("Created: {$eloquentName}");
+            $this->info("[EloquentRepository] [{$eloquentName}] created at: {$eloquentPath}");
 
             $gitkeepPath = dirname($eloquentPath).'/.gitkeep';
             if (File::exists($gitkeepPath)) {

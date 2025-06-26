@@ -66,6 +66,6 @@ class MakeEntityCommand extends Command
             File::delete($gitkeepPath);
         }
 
-        $this->info("{$entityType} Entity [{$className}] created at: {$path}");
+        $this->info("[{$entityType} Entity] [{$className}] created at: {$path}");
     }
 }

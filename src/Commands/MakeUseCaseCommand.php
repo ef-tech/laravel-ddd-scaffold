@@ -54,6 +54,6 @@ class MakeUseCaseCommand extends Command
             File::delete($gitkeepPath);
         }
 
-        $this->info("UseCase [{$className}] created at: {$path}");
+        $this->info("[UseCase] [{$className}] created at: {$path}");
     }
 }

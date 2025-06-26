@@ -46,6 +46,6 @@ class MakeConstantCommand extends Command
             File::delete($gitkeepPath);
         }
 
-        $this->info("Constant class [{$name}] created at: {$path}");
+        $this->info("[Constant] [{$name}] created at: {$path}");
     }
 }

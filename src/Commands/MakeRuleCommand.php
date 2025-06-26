@@ -46,6 +46,6 @@ class MakeRuleCommand extends Command
             File::delete($gitkeepPath);
         }
 
-        $this->info("Rule [{$name}] created at: {$path}");
+        $this->info("[Rule] [{$name}] created at: {$path}");
     }
 }

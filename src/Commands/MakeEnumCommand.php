@@ -53,6 +53,6 @@ class MakeEnumCommand extends Command
             File::delete($gitkeepPath);
         }
 
-        $this->info("Enum [{$name}] created at: {$path}");
+        $this->info("[Enum] [{$name}] created at: {$path}");
     }
 }
